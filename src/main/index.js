@@ -20,9 +20,11 @@ function createWindow () {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 563,
     useContentSize: true,
-    width: 1000
+    autoHideMenuBar: true,
+    title: 'Spectero Desktop',
+    width: 1300,
+    height: 700
   })
 
   mainWindow.loadURL(winURL)

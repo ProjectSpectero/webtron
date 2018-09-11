@@ -1,6 +1,6 @@
 <template>
   <div class="web-wrapper">
-    <webview class="web" src="https://app.spectero.com/"></webview>
+    <webview class="web" src="http://localhost:8080"></webview>
   </div>
 </template>
 
