@@ -6,10 +6,11 @@
 
 <script>
   export default {
-    name: 'webtron'
+    name: 'spectero'
   }
 </script>
 
-<style>
-  /* CSS */
+<style lang="scss">
+@import '~@styles/main.scss';
 </style>
+
