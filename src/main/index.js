@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, session } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -25,6 +25,21 @@ function createWindow () {
     title: 'Spectero Desktop',
     width: 1300,
     height: 700
+  })
+
+  const filter = {
+    urls: ['http://*/*', 'https://*/*']
+  }
+
+  session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback) => {
+    details.requestHeaders['User-Agent'] = 'Spectero Desktop'
+
+    // eslint-disable-next-line
+    callback({ cancel: false, requestHeaders: details.requestHeaders })
+  }, (error) => {
+    if (error) {
+      console.error('Failed to append HTTP header', error)
+    }
   })
 
   mainWindow.loadURL(winURL)
