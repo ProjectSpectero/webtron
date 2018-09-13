@@ -19,7 +19,7 @@ let hotMiddleware
 function logStats (proc, data) {
   let log = ''
 
-  log += chalk.yellow.bold(`┏ ${proc} Process ${new Array((19 - proc.length) + 1).join('-')}`)
+  log += `--- ${proc} Process ---`
   log += '\n\n'
 
   if (typeof data === 'object') {
@@ -32,8 +32,6 @@ function logStats (proc, data) {
   } else {
     log += `  ${data}\n`
   }
-
-  log += '\n' + chalk.yellow.bold(`┗ ${new Array(28 + 1).join('-')}`) + '\n'
 
   console.log(log)
 }
@@ -135,37 +133,11 @@ function electronLog (data, color) {
     log += `  ${line}\n`
   })
   if (/[0-9A-z]+/.test(log)) {
-    console.log(
-      chalk[color].bold('┏ Electron -------------------') +
-      '\n\n' +
-      log +
-      chalk[color].bold('┗ ----------------------------') +
-      '\n'
-    )
+    console.log(chalk[color].bold(log))
   }
 }
 
-function greeting () {
-  const cols = process.stdout.columns
-  let text = ''
-
-  if (cols > 104) text = 'electron-vue'
-  else if (cols > 76) text = 'electron-|vue'
-  else text = false
-
-  if (text) {
-    say(text, {
-      colors: ['yellow'],
-      font: 'simple3d',
-      space: false
-    })
-  } else console.log(chalk.yellow.bold('\n  electron-vue'))
-  console.log(chalk.blue('  getting ready...') + '\n')
-}
-
 function init () {
-  greeting()
-
   Promise.all([startRenderer(), startMain()])
     .then(() => {
       startElectron()

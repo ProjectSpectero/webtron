@@ -1,17 +1,20 @@
 <template>
   <div class="wrapper">
-    <web-wrapper/>
     <sidebar/>
   </div>
 </template>
 
 <script>
-import webWrapper from '@/components/webWrapper'
+import { ipcRenderer } from 'electron'
 import sidebar from '@/components/sidebar'
+
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('Loading Spectero desktop ...')
+  ipcRenderer.send('specteroReady')
+})
 
 export default {
   components: {
-    webWrapper,
     sidebar
   }
 }
@@ -19,8 +22,7 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  display: flex;
-  height: 100vh;
+  position: relative;
 }
 </style>
 

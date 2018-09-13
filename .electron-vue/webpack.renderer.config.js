@@ -11,6 +11,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const BourbonNeat = require('bourbon-neat').includePaths[0]
 
 /**
  * List of node_modules to include in webpack bundle
@@ -145,9 +146,11 @@ let rendererConfig = {
   resolve: {
     alias: {
       '@': path.join(__dirname, '../src/renderer'),
-      '@assets': path.join(__dirname, '../src/renderer/assets'),
-      '@styles': path.join(__dirname, '../src/renderer/assets/styles'),
-      '@fonts': path.join(__dirname, '../src/renderer/assets/fonts'),
+      '@webtron-styles': path.join(__dirname, '../src/renderer/assets/styles'),
+      '@fonts': path.join(__dirname, '../src/webapp/src/shared/assets/fonts'),
+      '@img': path.join(__dirname, '../src/webapp/src/shared/assets/img'),
+      '@styles': path.join(__dirname, '../src/webapp/src/shared/assets/styles'),
+      '@neat': BourbonNeat,
       'vue$': 'vue/dist/vue.esm.js'
     },
     extensions: ['.js', '.vue', '.json', '.css', '.node']

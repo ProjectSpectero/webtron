@@ -1,4 +1,45 @@
-@import "vars/all";
-@import "components/fonts";
-@import "components/global";
-@import "components/sidebar";
+// Variables
+@import "~@styles/vars/all";
+
+// Bourbon neat (https://neat.bourbon.io/)
+@import "~@neat/_neat.scss";
+
+// Components
+// @import "~@styles/components/utility";
+@import "~@styles/components/fonts";
+@import "~@styles/components/animations";
+@import "~@styles/components/icons";
+@import "~@styles/components/global";
+// @import "~@styles/components/layout";
+@import "~@styles/components/sidebar";
+@import "~@styles/components/helpers";
+@import "~@styles/components/typography";
+@import "~@styles/components/logo";
+@import "~@styles/components/form";
+@import "~@styles/components/inputs";
+@import "~@styles/components/buttons";
+@import "~@styles/components/messages";
+@import "~@styles/components/badges";
+@import "~@styles/components/tables";
+@import "~@styles/components/filters";
+@import "~@styles/components/modals";
+@import "~@styles/components/content";
+@import "~@styles/components/tabs";
+@import "~@styles/components/loaders";
+@import "~@styles/components/dropdowns";
+@import "~@styles/components/misc";
+@import "~@styles/components/alert";
+
+// Pages
+@import "~@styles/pages/error";
+@import "~@styles/pages/auth";
+@import "~@styles/pages/daemon";
+@import "~@styles/pages/checkout";
+
+// Print styles
+@import "~@styles/pages/print";
+
+// Dependencies
+@import "~@styles/dependencies/stripe";
+@import "~@styles/dependencies/vue-tables";
+@import "~@styles/dependencies/tooltip";
