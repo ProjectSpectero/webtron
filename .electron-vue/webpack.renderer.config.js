@@ -146,11 +146,7 @@ let rendererConfig = {
   resolve: {
     alias: {
       '@': path.join(__dirname, '../src/renderer'),
-      '@webtron-styles': path.join(__dirname, '../src/renderer/assets/styles'),
-      '@fonts': path.join(__dirname, '../src/webapp/src/shared/assets/fonts'),
-      '@img': path.join(__dirname, '../src/webapp/src/shared/assets/img'),
-      '@styles': path.join(__dirname, '../src/webapp/src/shared/assets/styles'),
-      '@neat': BourbonNeat,
+      '@styles': path.join(__dirname, '../src/renderer/assets/styles'),
       'vue$': 'vue/dist/vue.esm.js'
     },
     extensions: ['.js', '.vue', '.json', '.css', '.node']

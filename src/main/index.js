@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow, BrowserView, session, ipcMain } from 'electron'
+import { app, BrowserWindow, ipcMain, session } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -11,9 +11,11 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 let mainWindow
-const winURL = process.env.NODE_ENV === 'development'
-  ? `http://localhost:9080`
-  : `file://${__dirname}/index.html`
+// const winURL = process.env.NODE_ENV === 'development'
+//   ? `http://localhost:9080`
+//   : `file://${__dirname}/index.html`
+
+const webURL = `http://127.0.0.1:9000`
 
 function createWindow () {
   /**
@@ -26,26 +28,25 @@ function createWindow () {
     useContentSize: true,
     autoHideMenuBar: true,
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: false,
       contextIsolation: false,
       devTools: true
     }
   })
 
-  let view = new BrowserView({
-    webPreferences: {
-      nodeIntegration: false
-    }
-  })
+  // let view = new BrowserView({
+  //   webPreferences: {
+  //     nodeIntegration: false
+  //   }
+  // })
+  // mainWindow.setBrowserView(view)
+  // view.setBounds({ x: 0, y: 0, width: 800, height: 700 })
+  // view.webContents.loadURL(specteroWebsite)
 
   loadIpcHandlers()
   processHeaders()
 
-  mainWindow.setBrowserView(view)
-  view.setBounds({ x: 0, y: 0, width: 1000, height: 700 })
-  view.webContents.loadURL('https://app.spectero.com')
-
-  mainWindow.loadURL(winURL)
+  mainWindow.loadURL(webURL)
 
   mainWindow.on('closed', () => {
     mainWindow = null
@@ -71,15 +72,15 @@ function loadIpcHandlers () {
     console.log('Spectero Desktop is ready.')
   })
 
-  // Listen for async message from renderer process
-  ipcMain.on('async', (event, arg) => {
-    mainWindow.webContents.send('spectero-async-call', 'async call sent')
-  })
+//   // Listen for async message from renderer process
+//   ipcMain.on('async', (event, arg) => {
+//     mainWindow.webContents.send('spectero-async-call', 'async call sent')
+//   })
 
-  // Listen for sync message from renderer process
-  ipcMain.on('sync', (event, arg) => {
-    mainWindow.webContents.send('spectero-sync-call', 'sync call sent')
-  })
+//   // Listen for sync message from renderer process
+//   ipcMain.on('sync', (event, arg) => {
+//     mainWindow.webContents.send('spectero-sync-call', 'sync call sent')
+//   })
 }
 
 function processHeaders () {

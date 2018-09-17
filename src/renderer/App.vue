@@ -11,6 +11,6 @@
 </script>
 
 <style lang="scss">
-@import '~@webtron-styles/main.scss';
+@import '~@styles/main.scss';
 </style>
 
