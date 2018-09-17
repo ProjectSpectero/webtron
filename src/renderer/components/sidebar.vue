@@ -12,6 +12,7 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar {
+  margin-left: auto;
   width: 200px;
   text-align: center;
   padding: 1rem;

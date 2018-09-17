@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-    <web/>
     <sidebar/>
   </div>
 </template>
@@ -8,7 +7,6 @@
 <script>
 import { ipcRenderer } from 'electron'
 import sidebar from '@/components/sidebar'
-import web from '@/components/web'
 
 document.addEventListener('DOMContentLoaded', function () {
   ipcRenderer.send('specteroReady')
@@ -16,8 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 export default {
   components: {
-    sidebar,
-    web
+    sidebar
   }
 }
 </script>
