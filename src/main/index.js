@@ -3,10 +3,6 @@
 import { app, BrowserWindow, BrowserView, ipcMain, session } from 'electron'
 import config from '../../.electron-vue/config'
 
-/**
- * Set `__static` path to static files in production
- * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
- */
 if (process.env.NODE_ENV !== 'development') {
   global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
 }
@@ -24,23 +20,26 @@ function createWindow () {
    */
   mainWindow = new BrowserWindow({
     title: 'Spectero Desktop',
-    width: 1300,
+    width: 1100,
     height: 700,
-    useContentSize: true,
     autoHideMenuBar: true,
+    center: true,
+    resizable: true,
+    frame: true,
+    transparent: false,
     webPreferences: {
-      nodeIntegration: false,
-      contextIsolation: false,
-      devTools: true
+      nodeIntegration: (process.env.NODE_ENV === 'development'),
+      devTools: (process.env.NODE_ENV === 'development')
     }
   })
 
   let webWiew = new BrowserView({
     webPreferences: {
-      nodeIntegration: false
+      nodeIntegration: false,
+      preload: './preload.js'
     }
   })
-  webWiew.setBounds({ x: 0, y: 0, width: 800, height: 700 })
+  webWiew.setBounds({ x: 0, y: 50, width: 1100, height: 650 })
 
   loadIpcHandlers()
   processHeaders()

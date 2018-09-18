@@ -4,15 +4,13 @@
   </div>
 </template>
 
-<script>
-export default {
-
-}
-</script>
-
 <style lang="scss" scoped>
 .sidebar {
-  margin-left: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: red;
   width: 200px;
   text-align: center;
   padding: 1rem;

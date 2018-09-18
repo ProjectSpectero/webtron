@@ -45,7 +45,14 @@ let rendererConfig = {
       },
       {
         test: /\.scss$/,
-        use: ['vue-style-loader', 'css-loader', 'sass-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader', {
+          loader: 'style-resources-loader',
+          options: {
+            patterns: [
+              path.resolve(__dirname, '../src/renderer/assets/styles/vars/_all.scss')
+            ]
+          }
+        }]
       },
       {
         test: /\.sass$/,
@@ -147,6 +154,7 @@ let rendererConfig = {
     alias: {
       '@': path.join(__dirname, '../src/renderer'),
       '@styles': path.join(__dirname, '../src/renderer/assets/styles'),
+      '@fonts': path.join(__dirname, '../src/renderer/assets/fonts'),
       'vue$': 'vue/dist/vue.esm.js'
     },
     extensions: ['.js', '.vue', '.json', '.css', '.node']

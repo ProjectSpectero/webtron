@@ -5,9 +5,15 @@
 </template>
 
 <script>
-  export default {
-    name: 'spectero'
-  }
+import { ipcRenderer } from 'electron'
+
+document.addEventListener('DOMContentLoaded', function () {
+  ipcRenderer.send('specteroReady')
+})
+
+export default {
+  name: 'spectero'
+}
 </script>
 
 <style lang="scss">

@@ -1,5 +1,9 @@
-import { ipcRenderer } from 'electron'
+const { ipcRenderer } = require('electron')
 
-window.sendToElectron = function (channel) {
-  ipcRenderer.send(channel)
-}
+ipcRenderer.on('request', () => {
+  ipcRenderer.sendToHost({ spectero: 'yes' })
+})
+
+ipcRenderer.on('alert-something', (event, data) => {
+  alert(data)
+})

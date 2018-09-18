@@ -1,20 +1,15 @@
 <template>
   <div class="wrapper">
-    <sidebar/>
+    <tabs/>
   </div>
 </template>
 
 <script>
-import { ipcRenderer } from 'electron'
-import sidebar from '@/components/sidebar'
-
-document.addEventListener('DOMContentLoaded', function () {
-  ipcRenderer.send('specteroReady')
-})
+import tabs from '@/components/tabs'
 
 export default {
   components: {
-    sidebar
+    tabs
   }
 }
 </script>
