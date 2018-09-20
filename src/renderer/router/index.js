@@ -4,8 +4,10 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'hash',
   routes: [
-    { path: '/', name: 'home', component: require('@/views/home').default },
+    { path: '/', name: 'web', component: require('@/views/web').default },
+    { path: '/connect', name: 'connect', component: require('@/views/connect').default },
     { path: '*', redirect: '/' }
   ]
 })

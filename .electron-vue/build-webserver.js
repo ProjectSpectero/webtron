@@ -19,8 +19,8 @@ if (fs.existsSync(specteroWeb) && fs.existsSync(specteroWeb + '/' + indexFile)) 
     serve(req, res, done)
   })
 
-  server.listen(config.port)
-  console.log(chalk.green.bold('\n\n*** Spectero Web initialized in http://127.0.0.1:' + config.port + '\n\n'))
+  server.listen(config.specteroWeb.port)
+  console.log(chalk.green.bold('\n\n*** Spectero Web initialized in ' + config.specteroWeb.url + ':' + config.specteroWeb.port + '\n\n'))
 } else {
   console.error(chalk.red.bold('\n\n*** ERROR: Spectero Web bundle not found in ' + specteroWeb + '! Aborting ...\n\n'))
   process.exit(-1)
